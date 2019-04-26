@@ -1,0 +1,55 @@
+
+§ frac_m : r x ⊢ y »»
+    § @r ⊢ +r0 +b » $0 $0
+    OBS b
+    | § @x ⊢ @y » $0
+    | § r0 @x ⊢ +r1 +x0 » ($0 + -1) ($1 * $0)
+      § r1 x0 ⊢ @y » #frac_m
+§ frac_m ~ int:R int:X ⊢ int:Y »»
+    ¶ @R ⊢ +R0 +B » $0 $0
+    ∠ B @X R0
+      | @Y » $1
+      | +R1 +X0 » ($2 + -1) ($1 * $2)
+        ¶ R1 X0 ⊢ @Y » #frac_m
+
+|
+§ frac_m ~ int:R int:X ⊢ int:Y »»
+    ¶ @R ⊢ +R0 +B » $0 ($0 + -1)
+    ∠ B @X R0 ⊢ @Y
+      | X ⊢ @Y » $0
+      | R0 X ⊢ +R1 +X0 » ($2 + -1) ($1 * $2)
+        ¶ R1 X0 ⊢ @Y » #frac_m
+
+§ frac : r ⊢ y »»
+  §< @r +x ⊢ @y » #fram_m
+    § ⊢ x » 1
+    >§
+§ frac_r ~ int:X ⊢ int:Y »
+  § @X ⊢ +X0 +B » $0 $0
+  OBS B
+  | § ⊢ @Y » 1
+  | § X0 ⊢ +X1 +X2 » $0 ($0 + -1)
+    §< X1 +F ⊢ @Y » ($0 * $1)
+       § X2 ⊢ F » #frac_r
+       >§
+
+§ frac_r ~ int:X ⊢ int:Y »»
+  ¶ X ⊢ +X0 +B » $0 $0
+  ∠ B X0 ⊢ Y
+    | ¶ ⊢ Y » 1
+    | ¶ X0 ⊢ +X1 +X2 » $0 ($0 + -1)
+      ¶< X1 +F ⊢ @Y » ($0 * $1)
+        § X2 ⊢ F »»
+          ¶ X2 ⊢ F » #frac_r
+        >¶
+
+§ frac_r ~ ℤ:X ⊢ ℤ:Y »»
+  ∎ ▼X ⊢ +X0 +B » $0 $0
+  ∠ B X0
+    | ▲Y » 1
+   >| +X1 +X2 » $X0 ($X0 + -1)
+      ∎< X1 +F ⊢ ▲Y » ($0 * $1)
+        >∎ X2 ⊢ F » #frac_r
+
+
+§ x.f : y z ⊢ q

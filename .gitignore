@@ -1,0 +1,10 @@
+
+*~
+*.o
+tmp*
+calc.exe
+*.exe
+*.cmo
+*.cmi
+.merlin
+_build
